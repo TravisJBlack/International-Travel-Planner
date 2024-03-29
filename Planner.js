@@ -1,0 +1,3 @@
+const requestURL = '';
+
+fetch(requestURL)
