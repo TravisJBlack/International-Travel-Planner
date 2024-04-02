@@ -1,3 +1,6 @@
+const cityInputEL = document.getElementById('city');
+const submitButton = document.getElementById('city-button');
+
 const citySubmit = function (){
     const searchedCity = cityInputEL.value.trim();
   
@@ -84,12 +87,18 @@ const citySubmit = function (){
       return output.join('');
   
     }
+
+    const hotel1El = document.getElementById('hotel1');
+    const hotel2El = document.getElementById('hotel2');
+    const hotel3El = document.getElementById('hotel3');
+    const hotel4El = document.getElementById('hotel4');
+    const hotel5El = document.getElementById('hotel5');
   
-        hotel1EL.innerHTML = `${details[0].name}-${details[0].location.address.addressLine1}, ${details[0].location.address.cityName}, ${details[0].location.address.provinceCode}, ${details[0].location.address.zip}, ${details[0].location.address.countryName}\n$${details[0].ratesSummary.minPrice}`;
-        hotel2EL.innerHTML = `${details[1].name}-${details[1].location.address.addressLine1}, ${details[1].location.address.cityName}, ${details[1].location.address.provinceCode}, ${details[1].location.address.zip}, ${details[1].location.address.countryName}\n$${details[1].ratesSummary.minPrice}`;
-        hotel3EL.innerHTML = `${details[2].name}-${details[2].location.address.addressLine1}, ${details[2].location.address.cityName}, ${details[2].location.address.provinceCode}, ${details[2].location.address.zip}, ${details[2].location.address.countryName}\n$${details[2].ratesSummary.minPrice}`;
-        hotel4EL.innerHTML = `${details[3].name}-${details[3].location.address.addressLine1}, ${details[3].location.address.cityName}, ${details[3].location.address.provinceCode}, ${details[3].location.address.zip}, ${details[3].location.address.countryName}\n$${details[3].ratesSummary.minPrice}`;
-        hotel5EL.innerHTML = `${details[4].name}-${details[4].location.address.addressLine1}, ${details[4].location.address.cityName}, ${details[4].location.address.provinceCode}, ${details[4].location.address.zip}, ${details[4].location.address.countryName}\n$${details[4].ratesSummary.minPrice}`;
+        hotel1El.innerHTML = `${details[0].name}-${details[0].location.address.addressLine1}, ${details[0].location.address.cityName}, ${details[0].location.address.provinceCode}, ${details[0].location.address.zip}, ${details[0].location.address.countryName}\n$${details[0].ratesSummary.minPrice}`;
+        hotel2El.innerHTML = `${details[1].name}-${details[1].location.address.addressLine1}, ${details[1].location.address.cityName}, ${details[1].location.address.provinceCode}, ${details[1].location.address.zip}, ${details[1].location.address.countryName}\n$${details[1].ratesSummary.minPrice}`;
+        hotel3El.innerHTML = `${details[2].name}-${details[2].location.address.addressLine1}, ${details[2].location.address.cityName}, ${details[2].location.address.provinceCode}, ${details[2].location.address.zip}, ${details[2].location.address.countryName}\n$${details[2].ratesSummary.minPrice}`;
+        hotel4El.innerHTML = `${details[3].name}-${details[3].location.address.addressLine1}, ${details[3].location.address.cityName}, ${details[3].location.address.provinceCode}, ${details[3].location.address.zip}, ${details[3].location.address.countryName}\n$${details[3].ratesSummary.minPrice}`;
+        hotel5El.innerHTML = `${details[4].name}-${details[4].location.address.addressLine1}, ${details[4].location.address.cityName}, ${details[4].location.address.provinceCode}, ${details[4].location.address.zip}, ${details[4].location.address.countryName}\n$${details[4].ratesSummary.minPrice}`;
   
   }
   
