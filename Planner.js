@@ -16,7 +16,7 @@ function currency_api(base,exchange) {
       console.log(data);
     });
 }
-currency_api("USD","EUR,CAD")
+currency_api("USD","EUR,USD,JPY,BGN,CZK,DKK,GBP,HUF,PLN,RON,SEK,CHF,ISK,NOK,HRK,RUB,TRY,AUD,BRL,CAD,CNY,HKD,IDR,ILS,INR,KRW,MXN,MYR,NZD,PHP,SGD,THB,ZAR")
 
 const citySubmit = function (){
   const searchedCity = cityInputEL.value.trim();
