@@ -37,20 +37,76 @@
       <div class="flex">
         <!-- Left side for Hotel Search -->
         <div class="w-1/2 bg-gray-200 p-4">
-          Search for hotel:
-          <ul>
-            <li id="hotel1">Hotel 1</li>
-            <b>Rating: <span id=stars1></span></b>
-            <li id="hotel2">Hotel 2</li>
-            <b>Rating: <span id=stars2></span></b>
-            <li id="hotel3">Hotel 3</li>
-            <b>Rating: <span id=stars3></span></b>
-            <li id="hotel4">Hotel 4</li>
-            <b>Rating: <span id=stars4></span></b>
-            <li id="hotel5">Hotel 4</li>
-            <b>Rating: <span id=stars5></span></b>
+          <p class="text-sm font-semibold leading-6 text-gray-900">Searched Hotels:</p>
+          <ul role="list" class="divide-y divide-gray-100">
+            <li class="flex justify-between gap-x-6 py-5">
+              <div class="flex min-w-0 gap-x-4">
+                <img class=" flex-none rounded-full bg-gray-50" id="img1" alt="">
+                <div class="min-w-0 flex-auto">
+                  <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name1"></p>
+                  <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address1"></p>
+                </div>
+              </div>
+              <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                <p class="text-sm leading-6 text-gray-900" id="cost1"></p>
+                <p class="mt-1 text-xs leading-5 text-gray-500" id="rating1"></p>
+              </div>
+            </li>
+            <li class="flex justify-between gap-x-6 py-5">
+              <div class="flex min-w-0 gap-x-4">
+                <img class="flex-none rounded-full bg-gray-50" id="img2" alt="">
+                <div class="min-w-0 flex-auto">
+                  <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name2"></p>
+                  <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address2"></p>
+                </div>
+              </div>
+              <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                <p class="text-sm leading-6 text-gray-900" id="cost2"></p>
+                <p class="mt-1 text-xs leading-5 text-gray-500" id="rating2"></p>
+              </div>
+              <li class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                  <img class="flex-none rounded-full bg-gray-50" id="img3" alt="">
+                  <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name3"></p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address3"></p>
+                  </div>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <p class="text-sm leading-6 text-gray-900" id="cost3"></p>
+                  <p class="mt-1 text-xs leading-5 text-gray-500" id="rating3"></p>
+                </div>
+              </li>
+              <li class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                  <img class="flex-none rounded-full bg-gray-50" id="img4" alt="">
+                  <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name4"></p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address4"></p>
+                  </div>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <p class="text-sm leading-6 text-gray-900" id="cost4"></p>
+                  <p class="mt-1 text-xs leading-5 text-gray-500" id="rating4"></p>
+                </div>
+              </li>
+              <li class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                  <img class="flex-none rounded-full bg-gray-50" id="img5" alt="">
+                  <div class="min-w-0 flex-auto">
+                    <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name5"></p>
+                    <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address5"></p>
+                  </div>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <p class="text-sm leading-6 text-gray-900" id="cost5"></p>
+                  <p class="mt-1 text-xs leading-5 text-gray-500" id="rating5"></p>
+                </div>
+              </li>
           </ul>
         </div>
+
+
         <!-- Right side for Hotel search -->
         <div class="w-1/2 bg-gray-300 p-4">
           Currency converter
