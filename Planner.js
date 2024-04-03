@@ -13,7 +13,7 @@ const citySubmit = function (){
   
 // fucntion takes the city enter and then gives a city id and passes it 
   const getLocation = function (city){
-    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${city}&search_type=HOTEL`;
+    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${city}&search_type=CITY`;
     const options = {
         method: 'GET',
         headers: {
@@ -25,9 +25,7 @@ const citySubmit = function (){
     fetch(url, options).then(function (response) {
       if(response.ok) {
         response.json().then(function (data) {
-          console
-          console.log(data[1].cityID);
-          hotels(data[1].cityID);
+          hotels(data[0].cityID);
         })
       } else {
         alert("please enter a valid city");
