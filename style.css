@@ -1,0 +1,17 @@
+.relative {
+    position: relative;
+  }
+  
+  .absolute {
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .relative:hover .hidden {
+    display: block;
+  }
+  
