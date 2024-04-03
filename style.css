@@ -1,4 +1,6 @@
-
+#datepicker1 {
+    z-index: 1000;
+}
 
 .relative {
     position: relative;
