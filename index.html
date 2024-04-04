@@ -10,6 +10,7 @@
   href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
   rel="stylesheet"
 />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
   </head>
   <div class="min-h-full">
     <nav class="bg-gray-800">
@@ -164,7 +165,7 @@
           <a
             href="#"
             class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Future features</a
+            >Future Features</a
           >
          
         </div>
@@ -187,13 +188,13 @@
         <div class="flex gap-4">
           <!-- Input: Destination [h-12] & min-w-[12rem] -->
           <input
-            class="h-12 min-w-[12rem] rounded-lg border-gray-700 indent-4 text-gray-700 shadow-lg focus:outline-none focus:ring focus:ring-gray-600"
+            class="h-12 min-w-[12rem] rounded-lg border-gray-700 indent-4 text-gray-700 shadow-lg focus:outline-none focus:ring focus:ring-gray-600" id="city"
             type="text"
             placeholder="Destination"
           />
           <!-- Button: Submit [h-12] -->
           <button
-          class="h-12 min-w-[8rem] rounded-lg border-2 text-white bg-gray-700 hover:bg-gray-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+          class="h-12 min-w-[8rem] rounded-lg border-2 text-white bg-gray-700 hover:bg-gray-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium" id="city-button"
           
           >
             Submit
@@ -212,7 +213,7 @@
               <ul role="list" class="divide-y divide-gray-100">
                 <li class="flex justify-between gap-x-6 py-5">
                   <div class="flex min-w-0 gap-x-4">
-                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img1" alt="hotel suggestion 1 api image">
+                    <img class="flex-none rounded-full bg-gray-50" id="img1" alt="">
                     <div class="min-w-0 flex-auto">
                       <p class="text-sm font-semibold leading-6 text-gray-900" id="hotel-name1"></p>
                       <p class="mt-1 truncate text-xs leading-5 text-gray-500" id="hotel-address1"></p>
@@ -221,11 +222,12 @@
                   <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
                     <p class="text-sm leading-6 text-gray-900"id="cost1"></p>
                     <p class="mt-1 text-xs leading-5 text-gray-500"id="rating1"></p>
+                    <p id="stars"></p>
                   </div>
                 </li>
                 <li class="flex justify-between gap-x-6 py-5">
                   <div class="flex min-w-0 gap-x-4">
-                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img2" alt="hotel suggestion 2 api image">
+                    <img class="flex-none rounded-full bg-gray-50" id="img2" alt="">
                     <div class="min-w-0 flex-auto">
                       <p class="text-sm font-semibold leading-6 text-gray-900"id="hotel-name2"></p>
                       <p class="mt-1 truncate text-xs leading-5 text-gray-500"id="hotel-address2"></p>
@@ -238,7 +240,7 @@
                 </li>
                 <li class="flex justify-between gap-x-6 py-5">
                     <div class="flex min-w-0 gap-x-4">
-                      <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img3" alt="hotel suggestion 3 api image">
+                      <img class="flex-none rounded-full bg-gray-50" id="img3" alt="">
                       <div class="min-w-0 flex-auto">
                         <p class="text-sm font-semibold leading-6 text-gray-900"id="hotel-name3"></p>
                         <p class="mt-1 truncate text-xs leading-5 text-gray-500"id="hotel-address3"></p>
@@ -251,7 +253,7 @@
                   </li>
                   <li class="flex justify-between gap-x-6 py-5">
                     <div class="flex min-w-0 gap-x-4">
-                      <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img4" alt="hotel suggestion 4 api image">
+                      <img class="flex-none rounded-full bg-gray-50" id="img4" alt="">
                       <div class="min-w-0 flex-auto">
                         <p class="text-sm font-semibold leading-6 text-gray-900"id="hotel-name4"></p>
                         <p class="mt-1 truncate text-xs leading-5 text-gray-500"id="hotel-address4"></p>
@@ -264,7 +266,7 @@
                   </li>
                   <li class="flex justify-between gap-x-6 py-5">
                     <div class="flex min-w-0 gap-x-4">
-                      <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img5" alt="hotel suggestion 5 api image">
+                      <img class="flex-none rounded-full bg-gray-50" id="img5" alt="">
                       <div class="min-w-0 flex-auto">
                         <p class="text-sm font-semibold leading-6 text-gray-900"id="hotel-name5"></p>
                         <p class="mt-1 truncate text-xs leading-5 text-gray-500"id="hotel-address5"></p>
@@ -274,20 +276,6 @@
                       <p class="text-sm leading-6 text-gray-900" id="cost5"></p>
                       <p class="mt-1 text-xs leading-5 text-gray-500" id="rating5"></p>
                     </div>
-                  </li>
-                  <li class="flex justify-between gap-x-6 py-5">
-                    <div class="flex min-w-0 gap-x-4">
-                      <img class="h-12 w-12 flex-none rounded-full bg-gray-50" id="img6" alt="hotel suggestion 6 api image">
-                      <div class="min-w-0 flex-auto">
-                        <p class="text-sm font-semibold leading-6 text-gray-900"id="hotel-name6"></p>
-                        <p class="mt-1 truncate text-xs leading-5 text-gray-500"id="hotel-address6"></p>
-                      </div>
-                    </div>
-                    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                      <p class="text-sm leading-6 text-gray-900" id="cost6"></p>
-                      <p class="mt-1 text-xs leading-5 text-gray-500" id="rating6"></p>
-                    </div>
-                  </li>
               </ul>
               
             </div>
@@ -438,6 +426,7 @@
                 </div>
               </div>
               <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
+              <script src="/Planner.js"></script>
             </div>
           </div>
         </main>

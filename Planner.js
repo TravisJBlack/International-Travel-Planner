@@ -1,19 +1,26 @@
 //getting the button and search input
 const cityInputEL = document.getElementById('city');
-const submitButton = document.getElementById('city-button');
+const checkInEl = document.getElementById('check-in');
+const checkOutEl = document.getElementById('check-out');
+const submitButton = document.getElementById('itinerary');
 
 //fucntion to handle the input from the user and sending the info to another function
 const citySubmit = function (){
-    const searchedCity = cityInputEL.value.trim();
+  const itinerary = {
+    city: cityInputEL.value.trim(),
+    checkIn: checkInEl.value,
+    checkOut: checkOutEl.value,
+  }
+    
   
-    if(searchedCity) {
-      getLocation(searchedCity);
+    if(itinerary) {
+      getLocation(itinerary);
     }
   ;}
   
 // fucntion takes the city enter and then gives a city id and passes it 
-  const getLocation = function (city){
-    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${city}&search_type=CITY`;
+  const getLocation = function (itinerary){
+    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${itinerary.city}&search_type=CITY`;
     const options = {
         method: 'GET',
         headers: {
@@ -25,7 +32,7 @@ const citySubmit = function (){
     fetch(url, options).then(function (response) {
       if(response.ok) {
         response.json().then(function (data) {
-          hotels(data[0].cityID);
+          hotels(data[0].cityID, itinerary);
         })
       } else {
         alert("please enter a valid city");
@@ -34,7 +41,7 @@ const citySubmit = function (){
   };
 
 // takes the city id and uses to get a list of hotels from api 
-  const hotels = function (cityId){
+  const hotels = function (cityId, itinerary){
     const hotelUrl = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?location_id=${cityId}&date_checkin=2024-07-24&date_checkout=2024-07-25&sort_order=PROXIMITY&rooms_number=1`;
     const hotelOptions = {
         method: 'GET',
@@ -141,4 +148,4 @@ const citySubmit = function (){
     hotel5CostEl.innerHTML = `min: $${details[4].ratesSummary.minPrice}`;
   };
   
-  submitButton.addEventListener('click', citySubmit);
+  //submitButton.addEventListener('click', citySubmit);
