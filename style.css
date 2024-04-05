@@ -1,21 +1,17 @@
-#datepicker1 {
-    z-index: 1000;
-}
 
 .relative {
-    position: relative;
-  }
-  
-  .absolute {
-    position: absolute;
-    z-index: 10;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .relative:hover .hidden {
-    display: block;
-  }
-  
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.relative:hover .hidden {
+  display: block;
+}
