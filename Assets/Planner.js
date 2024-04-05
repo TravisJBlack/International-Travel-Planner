@@ -4,6 +4,7 @@ const checkInEl = document.getElementById('check-in');
 const checkOutEl = document.getElementById('check-out');
 const submitButton = document.getElementById('itinerary');
 const searchedCitiesEL = document.getElementById('searched');
+const searchedCitiesMobileEl = document.getElementById('searched2');
 const searchedItinerary = JSON.parse(localStorage.getItem('list')) || [];
 
 
@@ -48,7 +49,7 @@ currency_api("USD",currency,amount)
 })
 
 function init() {
-  // creates previous searched city into button on page 
+  // creates previous searched city into button on page for desktop version
   for(let i = 0; i < searchedItinerary.length; i++){
     const cityContainer = document.createElement('li');
 
@@ -59,6 +60,20 @@ function init() {
     
     cityContainer.appendChild(cityButton);
     cityButton.addEventListener('click', function() {
+      getLocation(searchedItinerary[i]);
+    })
+  }
+
+// creates previous searched city into button on page for mobile version
+  for(let i = 0; i < searchedItinerary.length; i++){
+    const cityContainerMobile = document.createElement('li');
+
+    const cityButtonMoible = document.createElement('a');
+    cityButtonMoible.classList = `block px-4 p-2 btn btn-info hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"`;
+    cityButtonMoible.textContent = `${searchedItinerary[i].city}`;
+    searchedCitiesMobileEl.prepend(cityContainerMobile);
+    cityContainerMobile.appendChild(cityButtonMoible);
+    cityButtonMoible.addEventListener('click', function() {
       getLocation(searchedItinerary[i]);
     })
   }
@@ -76,19 +91,30 @@ const citySubmit = function (){
   }
   
   if(list) {
+    // creates previous searched city into button on page for desktop version
     const cityContainer = document.createElement('li');
-
     const cityButton = document.createElement('a');
     cityButton.classList = `block px-4 p-2 btn btn-info hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"`;
     cityButton.textContent = `${list.city}`;
     searchedCitiesEL.prepend(cityContainer);
-    cityContainer.prepend(cityButton);
+    cityContainer.appendChild(cityButton);
     searchedItinerary.push(list);
     localStorage.setItem('list',JSON.stringify(searchedItinerary));
     cityButton.addEventListener('click', function() {
       getLocation(list);
     })
-    
+
+    // creates previous searched city into button on page for mobile version
+    const cityContainerMobile = document.createElement('li');
+    const cityButtonMoible = document.createElement('a');
+    cityButtonMoible.classList = `block px-4 p-2 btn btn-info hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"`;
+    cityButtonMoible.textContent = `${list.city}`;
+    searchedCitiesMobileEl.prepend(cityContainerMobile);
+    cityContainerMobile.appendChild(cityButtonMoible);
+    cityButtonMoible.addEventListener('click', function() {
+      getLocation(list);
+    })
+
     getLocation(list);
   }
   };
