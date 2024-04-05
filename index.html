@@ -8,6 +8,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+  
 </head>
 <div class="min-h-full">
   <nav class="bg-gray-800">
@@ -15,7 +19,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img class="h-8 w-8" src="./logo.png" alt="International travel planners" />
+            <img class="h-8 w-8" src="./Assets/images/logo.png" alt="International travel planners" />
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
@@ -85,7 +89,7 @@
                   id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="absolute -inset-1.5"></span>
                   <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="./suitcase.png" alt="suitcase png" />
+                  <img class="h-8 w-8 rounded-full" src="./Assets/images/suitcase.png" alt="suitcase png" />
                 </button>
               </div>
 
@@ -122,7 +126,7 @@
     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
     <a href="dashboard" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
       aria-current="page">Dashboard</a>
-    <a href="#hotel-search"
+    <a href="#find-hotels"
       class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Search
       Hotels</a>
     <a href="#currency-converter"
@@ -486,7 +490,7 @@ Cancel
             </div>
           </div>
           <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>
-          <script src="Planner.js"></script>
+          <script src="/Assets/Planner.js"></script>
         </div>
       </div>
     </main>
@@ -497,5 +501,54 @@ Cancel
 
 </div>
 </main>
+<!-- footer -->
+<footer class="relative bg-blueGray-200 pt-8 pb-6">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap text-left lg:text-left">
+      <div class="w-full lg:w-6/12 px-4">
+        <h4 class="text-3xl fonat-semibold text-blueGray-700">Let's keep in touch!</h4>
+        <h5 class="text-lg mt-0 mb-2 text-blueGray-600">
+          Find us on any of these platforms.
+        </h5>
+        <div class="mt-6 lg:mb-0 mb-6">
+          <button class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
+             <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </div>
+      <div class="w-full lg:w-6/12 px-4">
+        <div class="flex flex-wrap items-top mb-6">
+          <div class="w-full lg:w-4/12 px-4 ml-auto">
+            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Useful Links</span>
+            <ul class="list-unstyled">
+            
+              <li>
+                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/TravisJBlack/International-Travel-Planner.git">Github</a>
+              </li>
+             
+            </ul>
+          </div>
+          <div class="w-full lg:w-4/12 px-4">
+            <span class="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Other Resources</span>
+            <ul class="list-unstyled">
+             
+              <li>
+                <a class="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/TravisJBlack/International-Travel-Planner.git">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-6 border-blueGray-300">
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          International Travel Planners
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 </div>
 </html>
