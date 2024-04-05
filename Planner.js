@@ -4,6 +4,48 @@ const checkInEl = document.getElementById('check-in');
 const checkOutEl = document.getElementById('check-out');
 const submitButton = document.getElementById('itinerary');
 
+const apiKey = `fca_live_nfY0OLbxe8dNoSBSSA33dKeIJhTJhWVgG5u2SSW1`
+function currency_api(base,exchange,amount) {
+const queryurl = `https://api.freecurrencyapi.com/v1/latest?apikey=${apiKey}&base_currency=${base}&currencies=${exchange}`;
+fetch(queryurl)
+.then(function (response) {
+console.log(response);
+return response.json();
+})
+.then(function (data) {
+console.log(data);
+console.log(data.data[exchange])
+const newAmount = amount * data.data[exchange]
+console.log(newAmount)
+const basecurrency = document.createElement("p")
+basecurrency.textContent=`Base Currency: ${base}`
+const exchangecurrency = document.createElement("p")
+exchangecurrency.textContent=`Exchange Currency: ${exchange}`
+const amountholder = document.createElement("p")
+amountholder.textContent=`${amount} ${base} = ${newAmount} ${exchange}`
+document.querySelector("#currency-results").append(basecurrency,exchangecurrency,amountholder)
+});
+}
+
+
+// currency_api("USD","EUR,USD,JPY,BGN,CZK,DKK,GBP,HUF,PLN,RON,SEK,CHF,ISK,NOK,HRK,RUB,TRY,AUD,BRL,CAD,CNY,HKD,IDR,ILS,INR,KRW,MXN,MYR,NZD,PHP,SGD,THB,ZAR")
+
+
+const convertbutton = document.querySelector("#converterbutton")
+
+
+
+
+convertbutton.addEventListener('click', function(event){
+event.preventDefault()
+const amount =document.querySelector("#amount").value;
+const currency =document.querySelector("#currency").value;
+currency_api("USD",currency,amount)
+})
+
+
+
+
 //fucntion to handle the input from the user and sending the info to another function
 const citySubmit = function (){
   const itinerary = {
