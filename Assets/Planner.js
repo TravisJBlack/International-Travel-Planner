@@ -1,8 +1,12 @@
 //getting the button and search input
-const cityInputEL = document.getElementById('city');
+const cityInputEL = document.getElementById('name');
 const checkInEl = document.getElementById('check-in');
 const checkOutEl = document.getElementById('check-out');
 const submitButton = document.getElementById('itinerary');
+const searchedCitiesEL = document.getElementById('searched');
+const searchedItinerary = JSON.parse(localStorage.getItem('list')) || [];
+
+
 
 const apiKey = `fca_live_nfY0OLbxe8dNoSBSSA33dKeIJhTJhWVgG5u2SSW1`
 function currency_api(base,exchange,amount) {
@@ -43,26 +47,55 @@ const currency =document.querySelector("#currency").value;
 currency_api("USD",currency,amount)
 })
 
+function init() {
+  // creates previous searched city into button on page 
+  for(let i = 0; i < searchedItinerary.length; i++){
+    const cityContainer = document.createElement('li');
 
+    const cityButton = document.createElement('a');
+    cityButton.classList = `block px-4 p-2 btn btn-info hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"`;
+    cityButton.textContent = `${searchedItinerary[i].city}`;
+    searchedCitiesEL.prepend(cityContainer);
+    
+    cityContainer.appendChild(cityButton);
+    cityButton.addEventListener('click', function() {
+      getLocation(searchedItinerary[i]);
+    })
+  }
+};
 
+init();
 
 //fucntion to handle the input from the user and sending the info to another function
 const citySubmit = function (){
-  const itinerary = {
-    city: cityInputEL.value.trim(),
-    checkIn: checkInEl.value,
-    checkOut: checkOutEl.value,
-  }
-    
   
-    if(itinerary) {
-      getLocation(itinerary);
-    }
-  ;}
+  const list = {
+    city: cityInputEL.value.trim(),
+    checkinDate: dayjs(checkInEl.value).format('YYYY-MM-DD'),
+    checkoutDate: dayjs(checkOutEl.value).format('YYYY-MM-DD'),
+  }
+  
+  if(list) {
+    const cityContainer = document.createElement('li');
+
+    const cityButton = document.createElement('a');
+    cityButton.classList = `block px-4 p-2 btn btn-info hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"`;
+    cityButton.textContent = `${list.city}`;
+    searchedCitiesEL.prepend(cityContainer);
+    cityContainer.prepend(cityButton);
+    searchedItinerary.push(list);
+    localStorage.setItem('list',JSON.stringify(searchedItinerary));
+    cityButton.addEventListener('click', function() {
+      getLocation(list);
+    })
+    
+    getLocation(list);
+  }
+  };
   
 // fucntion takes the city enter and then gives a city id and passes it 
-  const getLocation = function (itinerary){
-    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${itinerary.city}&search_type=CITY`;
+  const getLocation = function (list){
+    const url = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=${list.city}&search_type=CITY`;
     const options = {
         method: 'GET',
         headers: {
@@ -74,7 +107,7 @@ const citySubmit = function (){
     fetch(url, options).then(function (response) {
       if(response.ok) {
         response.json().then(function (data) {
-          hotels(data[0].cityID, itinerary);
+          hotels(data[0].cityID, list);
         })
       } else {
         alert("please enter a valid city");
@@ -83,8 +116,8 @@ const citySubmit = function (){
   };
 
 // takes the city id and uses to get a list of hotels from api 
-  const hotels = function (cityId, itinerary){
-    const hotelUrl = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?location_id=${cityId}&date_checkin=2024-07-24&date_checkout=2024-07-25&sort_order=PROXIMITY&rooms_number=1`;
+  const hotels = function (cityId, list){
+    const hotelUrl = `https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?location_id=${cityId}&date_checkin=${list.checkinDate}&date_checkout=${list.checkoutDate}&sort_order=PROXIMITY&rooms_number=1`;
     const hotelOptions = {
         method: 'GET',
         headers: {
@@ -100,7 +133,7 @@ const citySubmit = function (){
         hotelDetails(data.hotels);
         })
       } else {
-      console.log(error);
+      alert("please enter a future date");
      }
     });
   };
@@ -108,12 +141,6 @@ const citySubmit = function (){
   //fucntion to diplay all hotel data, handles getting the elements and then adding info into them also takes the rating number and put it into a function to render a star rating 
   const hotelDetails = function (details){
     console.log(details);
-  
-    document.getElementById("rating1").innerHTML = getStars(details[0].starRating);
-    document.getElementById("rating2").innerHTML = getStars(details[1].starRating);
-    document.getElementById("rating3").innerHTML = getStars(details[2].starRating);
-    document.getElementById("rating4").innerHTML = getStars(details[3].starRating);
-    document.getElementById("rating5").innerHTML = getStars(details[4].starRating);
   
     function getStars(rating) {
       // Round to nearest half
@@ -144,6 +171,7 @@ const citySubmit = function (){
     hotel1NameEl.innerHTML = `${details[0].name}`;
     hotel1AddressEl.innerHTML = `${details[0].location.address.addressLine1}, ${details[0].location.address.cityName}, ${details[0].location.address.provinceCode}, ${details[0].location.address.zip}, ${details[0].location.address.countryName}`;
     hotel1CostEl.innerHTML = `min: $${details[0].ratesSummary.minPrice}`;
+    document.getElementById("rating1").innerHTML = getStars(details[0].starRating);
 
     const img2 = document.getElementById('img2');
     img2.src = details[1].thumbnailUrl;
@@ -155,6 +183,7 @@ const citySubmit = function (){
     hotel2NameEl.innerHTML = `${details[1].name}`;
     hotel2AddressEl.innerHTML = `${details[1].location.address.addressLine1}, ${details[1].location.address.cityName}, ${details[1].location.address.provinceCode}, ${details[1].location.address.zip}, ${details[1].location.address.countryName}`;
     hotel2CostEl.innerHTML = `min: $${details[1].ratesSummary.minPrice}`;
+    document.getElementById("rating2").innerHTML = getStars(details[1].starRating);
 
     const img3 = document.getElementById('img3');
     img3.src = details[2].thumbnailUrl;
@@ -166,6 +195,7 @@ const citySubmit = function (){
     hotel3NameEl.innerHTML = `${details[2].name}`;
     hotel3AddressEl.innerHTML = `${details[2].location.address.addressLine1}, ${details[2].location.address.cityName}, ${details[2].location.address.provinceCode}, ${details[2].location.address.zip}, ${details[2].location.address.countryName}`;
     hotel3CostEl.innerHTML = `min: $${details[2].ratesSummary.minPrice}`;
+    document.getElementById("rating3").innerHTML = getStars(details[2].starRating);
 
     const img4 = document.getElementById('img4');
     img4.src = details[3].thumbnailUrl;
@@ -177,6 +207,7 @@ const citySubmit = function (){
     hotel4NameEl.innerHTML = `${details[3].name}`;
     hotel4AddressEl.innerHTML = `${details[3].location.address.addressLine1}, ${details[3].location.address.cityName}, ${details[3].location.address.provinceCode}, ${details[3].location.address.zip}, ${details[3].location.address.countryName}`;
     hotel4CostEl.innerHTML = `min: $${details[3].ratesSummary.minPrice}`;
+    document.getElementById("rating4").innerHTML = getStars(details[3].starRating);
 
     const img5 = document.getElementById('img5');
     img5.src = details[4].thumbnailUrl;
@@ -188,6 +219,7 @@ const citySubmit = function (){
     hotel5NameEl.innerHTML = `${details[4].name}`;
     hotel5AddressEl.innerHTML = `${details[4].location.address.addressLine1}, ${details[4].location.address.cityName}, ${details[4].location.address.provinceCode}, ${details[4].location.address.zip}, ${details[4].location.address.countryName}`;
     hotel5CostEl.innerHTML = `min: $${details[4].ratesSummary.minPrice}`;
+    document.getElementById("rating5").innerHTML = getStars(details[4].starRating);
   };
   
-  //submitButton.addEventListener('click', citySubmit);
+  submitButton.addEventListener('click', citySubmit);
