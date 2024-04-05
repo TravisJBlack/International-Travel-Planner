@@ -133,7 +133,7 @@ const citySubmit = function (){
         hotelDetails(data.hotels);
         })
       } else {
-      console.log(error);
+      alert("please enter a future date");
      }
     });
   };
