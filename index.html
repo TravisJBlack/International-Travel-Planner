@@ -296,6 +296,7 @@
               <h2 id="currency-converter" class="text-lg font-semibold">
                 Currency Converter
               </h2>
+              <div id="currency-results"></div>
               <!-- component -->
               <div class="flex items-center justify-center h-screen">
                 <div x-data="{ showModal: true, email: '' }">
@@ -401,13 +402,19 @@
                                   x-model="email"
                                   class="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
                                   placeholder="Add Amount"
+                                  id="amount"
                                 />
-                                <input
-                                  type="email"
-                                  x-model="email"
-                                  class="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500"
-                                  placeholder="Add Currency"
-                                />
+                                <label for="currency">Choose Currency:</label>
+
+                                <select name="currency" id="currency">
+                                  <option value="USD">USD</option>
+                                  <option value="EUR">EUR</option>
+                                  <option value="JPY">JPY</option>
+                                  <option value="BGN">BGN</option>
+                                </select>
+                                
+                                
+                                  
                               </div>
                             </div>
                           </div>
@@ -417,7 +424,8 @@
                         >
                           <!-- Convert button -->
                           <button
-                            @click="convertToCurrency"
+                            @click="showModal = false"
+                            id="converterbutton"
                             type="button"
                             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                           >
