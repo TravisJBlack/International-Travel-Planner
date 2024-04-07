@@ -1,6 +1,6 @@
 # International Travel Planner
 
-This website serves as an international travel planner and currency converter, This will allow users to plan their trips while also managing their budgets effectively through currency conversion.
+This website serves as an international travel planner and currency converter. This will allow users to plan their trips while also managing their budgets effectively through currency conversion.
 
 ## Table of Contents
 
