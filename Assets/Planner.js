@@ -24,7 +24,7 @@ const newAmount = amount * data.data[exchange]
 console.log(newAmount)
 const currencyResults = document.getElementById('currency-results');
 const cards = document.createElement('div');
-cards.classList = "block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+cards.classList = "block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
 const basecurrency = document.createElement("p")
 basecurrency.classList = 'mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'
 basecurrency.textContent=`Base Currency: ${base}`
