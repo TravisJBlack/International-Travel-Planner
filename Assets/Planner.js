@@ -22,13 +22,20 @@ console.log(data);
 console.log(data.data[exchange])
 const newAmount = amount * data.data[exchange]
 console.log(newAmount)
+const currencyResults = document.getElementById('currency-results');
+const cards = document.createElement('div');
+cards.classList = "block max-w-sm p-6 m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
 const basecurrency = document.createElement("p")
+basecurrency.classList = 'mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'
 basecurrency.textContent=`Base Currency: ${base}`
 const exchangecurrency = document.createElement("p")
+exchangecurrency.classList = 'font-normal text-gray-700 dark:text-gray-400'
 exchangecurrency.textContent=`Exchange Currency: ${exchange}`
 const amountholder = document.createElement("p")
+amountholder.classList = 'font-normal text-gray-700 dark:text-gray-400'
 amountholder.textContent=`${amount} ${base} = ${newAmount} ${exchange}`
-document.querySelector("#currency-results").append(basecurrency,exchangecurrency,amountholder)
+currencyResults.append(cards)
+cards.append(basecurrency,exchangecurrency,amountholder)
 });
 }
 
